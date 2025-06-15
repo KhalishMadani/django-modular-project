@@ -12,3 +12,6 @@ services:
         value: 3.10.12
       - key: WEB_CONCURRENCY
         value: 4
+      - key: DEBUG
+        value: True
+
