@@ -9,6 +9,6 @@ services:
       - key: DJANGO_SETTINGS_MODULE
         value: config.settings
       - key: PYTHON_VERSION
-        value: 3.10
+        value: 3.10.12
       - key: WEB_CONCURRENCY
         value: 4
