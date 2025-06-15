@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - Engine App{% endblock title %}
+
+{% block content %}
+<h1 class="mb-4">Modules</h1>
+
+<div class="row g-4">
+    {% for obj in modules %}
+    <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">{{ obj.name }}</h5>
+
+                {% if obj.installed %}
+                    <a href="{% url 'product_list' %}" class="btn btn-outline-primary btn-sm mb-2">Visit Page</a>
+                {% endif %}
+
+                <div class="d-flex flex-wrap gap-2">
+                    {% if not obj.installed %}
+                        <a href="{% url 'install_module' obj.name %}" class="btn btn-success btn-sm">Install</a>
+                    {% else %}
+                        <button type="button" class="btn btn-primary btn-sm" disabled>Installed</button>
+                        <a href="#" class="btn btn-warning btn-sm">Upgrade</a>
+                        <a href="{% url 'uninstall_module' obj.name %}" class="btn btn-danger btn-sm">Uninstall</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<link rel="stylesheet" href="{% static 'css/modular_engine.css' %}">
+{% endblock content %}

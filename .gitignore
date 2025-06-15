@@ -1,0 +1,62 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+*.sqlite
+*.json
+local_settings.py
+db.sqlite3
+media/
+
+# Environment variables
+.env
+*.env
+
+# Static and media files (usually built/generated)
+staticfiles/
+static/
+media/
+
+# Build and distribution
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+*.venv/
+
+# VS Code / PyCharm / IDE config
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Coverage / testing
+htmlcov/
+.coverage
+.tox/
+.nox/
+.pytest_cache/
+coverage.xml
+*.cover
+
+# Migrations (optional — see notes below)
+**/migrations/*.pyc
+**/migrations/__pycache__/

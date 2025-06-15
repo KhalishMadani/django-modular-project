@@ -1,0 +1,34 @@
+{% load static %}
+ <link rel="stylesheet" href="{% static 'css/login_page.css' %}">
+<div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+  
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <h3>Login</h3>
+      </div>
+      
+      {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        </ul>
+      {% endif %}
+  
+      <!-- Login Form -->
+      <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+        <input type="text" id="login" class="fadeIn second" name="username" placeholder="username">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+  
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="{% url 'product_list' %}">Back</a>
+      </div>
+  
+    </div>
+  </div>

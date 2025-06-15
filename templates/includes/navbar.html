@@ -1,0 +1,66 @@
+<!-- Extra CSS in <style> -->
+<style>
+    .custom-navbar {
+        background-color: #f5c542;
+    }
+
+    .custom-navbar .navbar-brand,
+    .custom-navbar .nav-link,
+    .custom-navbar a {
+        color: #1e1e1e !important;
+        font-weight: 600;
+    }
+
+    .custom-navbar .nav-link:hover,
+    .custom-navbar a:hover {
+        color: #000000 !important;
+        text-decoration: underline;
+    }
+
+    .custom-navbar .user-info {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .custom-navbar .username {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .custom-navbar .username i {
+        font-size: 1rem;
+    }
+</style>
+
+<!-- Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg custom-navbar">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'logout' %}?next={% url 'module_list' %}">Home</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fa-solid fa-bars"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"></ul>
+
+            {% if request.user.is_authenticated %}
+            <div class="user-info">
+                <div class="username">
+                    <i class="fa-solid fa-user"></i>
+                    <strong>{{ request.user.username }}</strong>
+                </div>
+                <strong>
+                    <a href="{% url 'logout' %}?next={% url 'product_list' %}">Logout</a>
+                </strong>
+            </div>
+            {% else %}
+            <strong><a href="{% url 'login' %}">Login</a></strong>
+            {% endif %}
+        </div>
+    </div>
+</nav>

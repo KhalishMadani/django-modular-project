@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+{% load filter_users %}
+
+{% block title %}Home - Product{% endblock title %}
+{% block content %}
+{% include 'includes/navbar.html' %}
+
+<h1>PRODUCT</h1>
+<div class="add-product">
+    {% if user|has_group:"manager" or user|has_group:"user" %}
+    <a href="{% url 'product_create' %}" class="btn btn-success">Create New Product</a>
+    {% endif %}
+</div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Barcode</th>
+
+                {% if user|has_group:"manager" or user|has_group:"user" %}
+                    <th>Action</th>
+                {% endif %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in products %}
+            <tr>
+                <td>{{item.name}}</td>
+                <td>{{item.price}}</td>
+                <td>{{item.stock}}</td>
+                <td>
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data={{ item.barcode }}&code=CODE128" alt="Barcode">
+                </td>
+
+                {% if user|has_group:"manager" %}
+                <td>
+                    <a href="{% url 'product_update' item.pk %}" class="btn btn-warning">Update</a>
+                    <button class="btn btn-danger" onclick="confirmDelete({{ item.pk }})">Delete</button>
+                    <form id="delete-form-{{ item.pk }}" method="POST" action="{% url 'product_delete' item.pk %}">
+                        {% csrf_token %}
+                    </form>
+                </td>
+                {% elif user|has_group:"user" %}
+                <td>
+                    <a href="{% url 'product_update' item.pk %}" class="btn btn-warning">Update</a>
+                </td>
+                
+                {% endif %}
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<link rel="stylesheet" href="{% static 'css/product_menu.css' %}">
+    
+{% endblock content %}
