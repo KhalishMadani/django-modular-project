@@ -9,8 +9,8 @@ __pycache__/
 *.pyc
 *.pyo
 *.db
-*.sqlite3
-*.sqlite
+# *.sqlite3
+# *.sqlite
 *.json
 local_settings.py
 # db.sqlite3
