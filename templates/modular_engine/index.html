@@ -22,7 +22,7 @@
                         <a href="{% url 'install_module' obj.name %}" class="btn btn-success btn-sm">Install</a>
                     {% else %}
                         <button type="button" class="btn btn-primary btn-sm" disabled>Installed</button>
-                        <a href="#" class="btn btn-warning btn-sm">Upgrade</a>
+                        {% comment %} <a href="#" class="btn btn-warning btn-sm">Upgrade</a> {% endcomment %}
                         <a href="{% url 'uninstall_module' obj.name %}" class="btn btn-danger btn-sm">Uninstall</a>
                     {% endif %}
                 </div>

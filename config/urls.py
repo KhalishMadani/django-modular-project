@@ -16,10 +16,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('modular_engine.urls')),
+
+    # Redirect root URL to /base_url/module/
+    path('', RedirectView.as_view(url='/base_url/module/', permanent=False)),
+    
+    path('base_url/', include('modular_engine.urls')),
     path('', include('product.urls')),
     path('', include('authenticator.urls')),
 ]
