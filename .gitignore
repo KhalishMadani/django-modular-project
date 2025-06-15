@@ -22,7 +22,7 @@ media/
 
 # Static and media files (usually built/generated)
 staticfiles/
-static/
+# static/
 media/
 
 # Build and distribution
