@@ -7,7 +7,7 @@ from .views import (
 
 urlpatterns = [
     path(
-        '',
+        'base_url/module/',
         EngineTemplateView.as_view(),
         name="module_list"
     ),

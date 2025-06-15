@@ -22,9 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Redirect root URL to /base_url/module/
+    # for reference look at modular_engine.urls
     path('', RedirectView.as_view(url='/base_url/module/', permanent=False)),
-    
-    path('base_url/module', include('modular_engine.urls')),
+    path('', include('modular_engine.urls')),
     path('', include('product.urls')),
     path('', include('authenticator.urls')),
 ]
