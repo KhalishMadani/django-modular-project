@@ -12,6 +12,6 @@ services:
         value: 3.11.9
       - key: WEB_CONCURRENCY
         value: 4
-      - key: DEBUG
-        value: True
+      # - key: DEBUG
+      #   value: True
 
