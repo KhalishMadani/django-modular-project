@@ -52,11 +52,11 @@ class ProductDelete(DeleteView):
     model = Product
     success_url = reverse_lazy('product_list')
 
-    def delete(self, request, *args, **kwargs):
-        response = super().delete(request, *args, **kwargs)
-        messages.success(request, "The product was deleted successfully.")
-        
-        if request.headers.get('HX-Request'):  # HTMX support
+    def form_valid(self, form):
+        messages.success(self.request, "The product was deleted successfully.")
+        response = super().form_valid(form)
+
+        if self.request.headers.get('HX-Request'):
             return JsonResponse({"message": "The product was deleted successfully."})
 
         return response
