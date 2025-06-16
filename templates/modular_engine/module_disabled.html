@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Home - Engine App{% endblock title %}
+
+{% block content %}
+<h2>Module Unavailable</h2>
+<p>This module is currently not installed or has been disabled.</p>
+<a href="{% url 'module_list' %}">Go back to dashboard</a>
+<link rel="stylesheet" href="{% static 'css/modular_engine.css' %}">
+{% endblock content %}

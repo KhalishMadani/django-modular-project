@@ -2,7 +2,8 @@ from django.urls import path
 from .views import (
     EngineTemplateView,
     install_module,
-    uninstall_module
+    uninstall_module,
+    module_not_installed
     )
 
 urlpatterns = [
@@ -22,5 +23,11 @@ urlpatterns = [
         'unisntall-module/<str:obj_name>/',
         uninstall_module,
         name="uninstall_module"
+    ),
+    
+    path(
+        'module-not-installed/',
+        module_not_installed,
+        name="module_not_installed"
     ),
 ]

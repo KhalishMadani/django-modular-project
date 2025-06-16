@@ -1,3 +1,4 @@
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse
 from django.views.generic.list import ListView
@@ -23,3 +24,6 @@ def uninstall_module(request, obj_name):
     module.installed = False
     module.save()
     return redirect(reverse('module_list'))
+
+def module_not_installed(request):
+    return render(request, "modular_engine/module_disabled.html")
